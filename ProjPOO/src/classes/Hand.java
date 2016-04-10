@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Hand {
 	
 	private int totalValue;
-	ArrayList<Card> hand = new ArrayList<Card>();
+	private ArrayList<Card> hand = new ArrayList<Card>();
 	
 	
 	public Hand(Card c1, Card c2){
@@ -16,13 +16,32 @@ public class Hand {
 		
 	}
 	
+	@Override
+	public String toString() {
+		
+		String handstr = "Hand [totalValue=" + totalValue + ", hand=";
+		
+		for (int i = 0 ; i < hand.size(); i++){
+			
+			handstr += hand.get(i).toString();
+			if(i != hand.size() - 1) handstr += ", ";
+		}
+		handstr += "]";
+		
+		return handstr;
+	}
+
 	public int getTotalValue() {
 		return totalValue;
 	}
 
-
 	private void setTotalValue(int totalValue) {
 		this.totalValue = totalValue;
+		if(totalValue == 21){
+			System.out.println("BlackJack!!");
+		}else if(totalValue > 21){
+			System.out.println("Bust!!");
+		}
 	}
 	
 	public void addCard(Card c){

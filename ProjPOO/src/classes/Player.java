@@ -14,21 +14,23 @@ public class Player {
 		return money;
 	}
 
-	public Hand getHand() {
-		//implementar toString
-		return hand;
+	public void getHand() {
+		System.out.println(hand.toString());
 	}
 	
 	public void Deal() {
 		hand = new Hand(shoe.getCard(), shoe.getCard());
+		getHand();
 	}
 	
 	public void Hit(){
 		hand.addCard(shoe.getCard());
+		getHand();
 	}
 	
 	public void Stand(){
 		//nao faz nada
+		getHand();
 	}
 
 }

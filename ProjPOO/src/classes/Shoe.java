@@ -1,21 +1,22 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Shoe {
 
 	int nrDecks;
 	private int nrDecksLeft;
 	private int nrShuffles;
-	ArrayList<Card> shoe = new ArrayList<Card>();
+	private ArrayList<Card> shoe = new ArrayList<Card>();
 	private int nrCardsLeft;
 	
 	
 	public Shoe(int nrDecks, ArrayList<Card> cardsinit) {
 		
 		this.nrDecks = nrDecks;
-		this.nrDecksLeft = nrDecks;
-		this.nrCardsLeft = nrDecks * 52;
+		this.nrDecksLeft = nrDecks;		
+		this.nrCardsLeft = cardsinit.size();
 		
 		
 		//problema de misturar os decks enquanto que aqui estamos
@@ -43,12 +44,12 @@ public class Shoe {
 	}
 	
 	public void Shuffle(){
-		//implementar shuffle
+		Collections.shuffle(shoe);
 	}
 
 	public Card getCard() {
 		nrDecks = (nrCardsLeft - 1) / 52;
-		return shoe.get(nrCardsLeft--);
+		return shoe.get(--nrCardsLeft);
 	}
 	
 }
