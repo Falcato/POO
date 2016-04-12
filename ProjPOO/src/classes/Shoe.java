@@ -2,6 +2,7 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.EmptyStackException;
 
 public class Shoe {
 
@@ -48,6 +49,12 @@ public class Shoe {
 	}
 
 	public Card getCard() {
+		
+		if(nrCardsLeft == 0){
+			//IMPLEMENTAR THROW
+			throw new EmptyStackException();
+		}
+		
 		nrDecks = (nrCardsLeft - 1) / 52;
 		return shoe.get(--nrCardsLeft);
 	}

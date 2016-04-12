@@ -1,6 +1,6 @@
 package classes;
 
-public class Player {
+public class Player extends Dealer{
 	
 	private int money;
 	Hand hand;
@@ -14,8 +14,19 @@ public class Player {
 		return money;
 	}
 
+	public int setMoney(int money) {
+		
+		if(money < 0){
+			System.out.println("Not enough money!!");
+			System.out.println("Place a smaller bet!!");
+			return -1;
+		}
+		this.money = money;
+		return 1;
+	}
+
 	public void getHand() {
-		System.out.println(hand.toString());
+		System.out.println("player " + hand.toString());
 	}
 	
 	public void Deal() {
@@ -29,8 +40,10 @@ public class Player {
 	}
 	
 	public void Stand(){
-		//nao faz nada
 		getHand();
 	}
-
+	
+	public int Bet(int bet){
+		return setMoney(getMoney() - bet);
+	}
 }
