@@ -1,13 +1,11 @@
 package classes;
 
-public class Player extends Dealer{
+public class Player{
 	
 	private int money;
 	Hand hand;
-	Shoe shoe;
 	
-	public Player(int money){
-		this.money = money;
+	public Player(){
 	}
 
 	public int getMoney() {
@@ -29,21 +27,8 @@ public class Player extends Dealer{
 		System.out.println("player " + hand.toString());
 	}
 	
-	public void Deal() {
-		hand = new Hand(shoe.getCard(), shoe.getCard());
-		getHand();
-	}
-	
-	public void Hit(){
-		hand.addCard(shoe.getCard());
-		getHand();
-	}
-	
-	public void Stand(){
-		getHand();
-	}
-	
 	public int Bet(int bet){
+		if(bet == 0) return 0;
 		return setMoney(getMoney() - bet);
 	}
 }

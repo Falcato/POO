@@ -2,7 +2,6 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.EmptyStackException;
 
 public class Shoe {
 
@@ -10,14 +9,14 @@ public class Shoe {
 	private int nrDecksLeft;
 	private int nrShuffles;
 	private ArrayList<Card> shoe = new ArrayList<Card>();
-	private int nrCardsLeft;
+	private int nrCardsTaken;
 	
 	
 	public Shoe(int nrDecks, ArrayList<Card> cardsinit) {
 		
 		this.nrDecks = nrDecks;
 		this.nrDecksLeft = nrDecks;		
-		this.nrCardsLeft = cardsinit.size();
+		this.nrCardsTaken = 0;
 		
 		
 		//problema de misturar os decks enquanto que aqui estamos
@@ -35,8 +34,8 @@ public class Shoe {
 		return nrShuffles;
 	}
 	
-	public int getNrCardsLeft() {
-		return nrCardsLeft;
+	public int getNrCardsTaken() {
+		return nrCardsTaken;
 	}
 
 	
@@ -50,13 +49,10 @@ public class Shoe {
 
 	public Card getCard() {
 		
-		if(nrCardsLeft == 0){
-			//IMPLEMENTAR THROW
-			throw new EmptyStackException();
-		}
-		
-		nrDecks = (nrCardsLeft - 1) / 52;
-		return shoe.get(--nrCardsLeft);
+		nrDecks = (nrCardsTaken) / 52;
+		Card c = shoe.get(nrCardsTaken++);
+		shoe.add(c);
+		return c;
 	}
 	
 }

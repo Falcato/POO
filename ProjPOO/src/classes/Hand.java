@@ -41,7 +41,6 @@ public class Hand {
 			System.out.println("BlackJack!!");
 		}else if(totalValue > 21){
 			System.out.println("Bust!!");
-			this.totalValue = -1;
 		}
 	}
 	
