@@ -12,12 +12,12 @@ public class Card {
 		if(card.substring(0, 2).equals("10")){
 			this.figure = card.substring(0,2);
 			this.naipe = String.valueOf(card.charAt(2));
-			turned = false;
+			turned = true;
 			setValue(figure);
 		}else{
 			this.figure = String.valueOf(card.charAt(0));
 			this.naipe = String.valueOf(card.charAt(1));
-			turned = false;
+			turned = true;
 			setValue(figure);
 		}
 	}
@@ -25,6 +25,7 @@ public class Card {
 	public void setValue(String figure2) {
 		
 		switch(figure2) {
+			case "1":  this.value = 1;break;
 			case "2":  this.value = 2;break;
 			case "3":  this.value = 3;break;
 			case "4":  this.value = 4;break;
@@ -41,6 +42,7 @@ public class Card {
 
 	@Override
 	public String toString() {
+		if(turned == false) return "X";
 		return "" + figure + "" + naipe + "";
 	}
 
@@ -54,6 +56,14 @@ public class Card {
 
 	public String getFigure() {
 		return figure;
+	}
+
+	public boolean isTurned() {
+		return turned;
+	}
+
+	public void setTurned(boolean turned) {
+		this.turned = turned;
 	}
 	
 }

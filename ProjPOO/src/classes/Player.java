@@ -27,8 +27,8 @@ public class Player{
 		System.out.println("player " + hand.toString());
 	}
 	
-	public int Bet(int bet){
-		if(bet == 0) return 0;
+	public int Bet(int bet, int minBet, int maxBet){
+		if(bet < minBet || bet > maxBet) return 0;
 		return setMoney(getMoney() - bet);
 	}
 }
