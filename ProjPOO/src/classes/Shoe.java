@@ -11,7 +11,9 @@ public class Shoe {
 	private ArrayList<Card> shoe = new ArrayList<Card>();
 	private int nrCardsTaken;
 	private int nrCards;
+	private int runningCnt;
 	
+	private int aceFive;
 	
 	public Shoe(int nrDecks, ArrayList<Card> cardsinit, String mode, int shuffles) {
 		
@@ -20,6 +22,8 @@ public class Shoe {
 		this.nrCardsTaken = 0;
 		this.nrCards = 0;
 		this.shuffles = shuffles;
+		runningCnt = 0;
+		aceFive = 0;
 		
 		if(mode.equals("-d")){
 			for(int i = 0; i < nrDecks * cardsinit.size(); i++){
@@ -90,40 +94,63 @@ public class Shoe {
 		}
 	}
 	
-	public int getNrDecksLeft() {
+	int getNrDecksLeft() {
 		return nrDecksLeft;
 	}
 
-	public int getNrCardsTaken() {
+	int getNrCardsTaken() {
 		return nrCardsTaken;
 	}
 
-	public int getNrCards() {
+	int getNrCards() {
 		return nrCards;
 	}
 	
-	public void addCard(Card c){
+	int getRunningCnt(){
+		return runningCnt;
+	}
+	
+	int getAceFive(){
+		return aceFive;
+	}
+	
+	void addCard(Card c){
 		shoe.add(c);
 	}
 	
-	public void Shuffle(){
+	void Shuffle(){
 		Collections.shuffle(shoe);
 	}
-
-	public Card getCard() {
+	
+	int runningCntValue(Card c){
+		if(c.getValue() < 7) return 1;
+		else if(c.getValue() < 10) return 0;
+		else return -1;
+	}
+	
+	int aceFiveValue(Card c){
+		if(c.getValue() == 5) return 1;
+		else if(c.getValue() == 11) return -1;
+		else return 0;
+	}
+	
+	Card getCard() {
 		
 		nrDecks = (nrCardsTaken) / 52;
+		nrDecksLeft -= nrDecks;
 		Card c = shoe.get(nrCardsTaken++);
-		shoe.add(c);
 		if(c.getValue() == 1) c.setValue("A");
 		
+		runningCnt += runningCntValue(c);
+		aceFive += aceFiveValue(c);
+		
+		shoe.add(c);
 		if(nrCardsTaken == nrCards * shuffles / 100){
+			aceFive = 0;
+			runningCnt = 0;
 			Shuffle();
 			System.out.println("Shuffling Shoe...");
 		}
-		
 		return c;
-		
 	}
-	
 }

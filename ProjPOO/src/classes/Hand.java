@@ -11,7 +11,7 @@ public class Hand {
 	
 	public Hand(Card c1, Card c2, boolean visib){
 		
-		nrCards = 2;
+		nrCards = 0;
 		totalValue = 0;
 		
 		if(visib == false) c2.setTurned(false);
@@ -21,7 +21,7 @@ public class Hand {
 		
 	}
 	
-	public int getNrCards() {
+	int getNrCards() {
 		return nrCards;
 	}
 
@@ -30,23 +30,23 @@ public class Hand {
 	@Override
 	public String toString() {
 		
-		String handstr = "Hand [totalValue=" + totalValue + ", hand=";
+		String handstr = "[";
 		
-		if(hand.get(1).isTurned() == false){
-			handstr = "Hand [";
-		}
+		
 		
 		for (int i = 0 ; i < hand.size(); i++){
 			
 			handstr += hand.get(i).toString();
 			if(i != hand.size() - 1) handstr += ", ";
 		}
-		handstr += "]";
+		if(hand.get(1).isTurned() == false){
+			handstr += "]";
+		}else	handstr += "] (" + totalValue + ")";
 		
 		return handstr;
 	}
 
-	public int getTotalValue() {
+	int getTotalValue() {
 		return totalValue;
 	}
 
@@ -54,9 +54,7 @@ public class Hand {
 		this.totalValue = totalValue;
 		int aceCnt = 0;
 		
-		if(totalValue == 21){
-			System.out.println("BlackJack!!");
-		}else if(totalValue > 21){
+		if(totalValue > 21){
 			
 			for(int i = 0; i < hand.size(); i++){
 				if(hand.get(i).getValue() == 11){
@@ -70,16 +68,31 @@ public class Hand {
 		}
 	}
 	
-	public void addCard(Card c){
+	void addCard(Card c){
 		
 		int prevValue = getTotalValue();
 		hand.add(c);
 		setTotalValue(prevValue + c.getValue());
-		nrCards++;
-		
+		nrCards++;		
+	}
+	
+	void removeCard(){
+		int prevValue = getTotalValue();
+		setTotalValue(prevValue - hand.get(1).getValue());
+		hand.remove(1);
+		nrCards--;
 	}
 
-	public void turnCard() {
+	void turnCard() {
 		if(hand.get(1).isTurned() == false) hand.get(1).setTurned(true);		
+	}
+	
+	int checkInsurance(){
+		if(hand.get(0).getFigure().equals("A")) return 1;
+		else return 0;
+	}
+	
+	Card getCard(int index){
+		return hand.get(index);
 	}
 }

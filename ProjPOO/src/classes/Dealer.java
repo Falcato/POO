@@ -8,20 +8,24 @@ public class Dealer {
 	int CntPlayers = 0;
 	
 	
-	public void setShoe(Shoe shoe) {
+	void setShoe(Shoe shoe) {
 		this.shoe = shoe;
 	}
 
+	public Shoe getShoe() {
+		return shoe;
+	}
+	
 	public Dealer(){
 	}
 	
-	public void addPlayer(Player p1){
+	void addPlayer(Player p1){
 		players[CntPlayers] = p1;
 		CntPlayers ++;
 	}
 	
 	public void getHand() {
-		System.out.println("dealer " + hand.toString());
+		System.out.println("Dealer's hand " + hand.toString());
 	}
 	
 	void Deal() {
@@ -30,8 +34,9 @@ public class Dealer {
 		getHand();
 		
 		for(int i = 0; i < CntPlayers; i++){
-			players[i].hand = new Hand(shoe.getCard(), shoe.getCard(), true);
-			players[i].getHand();
+			players[i].hands[0] = new Hand(shoe.getCard(), shoe.getCard(), true);
+			players[i].getHand(0);
+			players[i].nrHands = 0;
 		}
 	}
 	
@@ -41,12 +46,14 @@ public class Dealer {
 		getHand();
 	}
 	
-	void giveCard(Player p){
-		p.hand.addCard(shoe.getCard());
-		p.getHand();
+	void giveCard(Player p, int handNr){
+		Card c = shoe.getCard();
+		if(c.turned == false) c.turned = true;
+		p.hands[handNr].addCard(c);
+		p.getHand(handNr);
 	}
 	
-	void giveMoney(Player p, int money){
+	void giveMoney(Player p, float money){
 		p.setMoney(p.getMoney() + money);
 	}
 	

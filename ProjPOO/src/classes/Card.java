@@ -22,7 +22,7 @@ public class Card {
 		}
 	}
 
-	public void setValue(String figure2) {
+	void setValue(String figure2) {
 		
 		switch(figure2) {
 			case "1":  this.value = 1;break;
@@ -46,23 +46,23 @@ public class Card {
 		return "" + figure + "" + naipe + "";
 	}
 
-	public int getValue() {
+	int getValue() {
 		return value;
 	}
 
-	public String getNaipe() {
+	String getNaipe() {
 		return naipe;
 	}
 
-	public String getFigure() {
+	String getFigure() {
 		return figure;
 	}
 
-	public boolean isTurned() {
+	boolean isTurned() {
 		return turned;
 	}
 
-	public void setTurned(boolean turned) {
+	void setTurned(boolean turned) {
 		this.turned = turned;
 	}
 	

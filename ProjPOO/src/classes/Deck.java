@@ -10,8 +10,7 @@ public class Deck {
 	public Deck(){
 		
 		nrCardsLeft = 52;
-		//implementar ir buscar ao txt o deck
-		
+			
 	}
 
 	public int getNrCardsLeft() {
