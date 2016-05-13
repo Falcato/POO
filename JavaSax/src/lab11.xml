@@ -1,0 +1,28 @@
+<?xml version = "1.0" ?>
+<!DOCTYPE article[
+
+	<!ELEMENT article (author+, title, local+, date, subtitle?, (section, txt)+)>
+	<!ELEMENT author (#PCDATA)>
+	<!ELEMENT title (#PCDATA)>
+	<!ELEMENT local (#PCDATA)>
+	<!ELEMENT date (#PCDATA)>
+	<!ELEMENT subtitle (#PCDATA)>
+	<!ELEMENT section (#PCDATA)>
+	<!ELEMENT txt (#PCDATA)>
+
+]>
+
+<article>
+
+	<author>Tomas Costa</author>
+	<title>Laboratorio 11</title>
+	<local>SDEEC 2</local>
+	<date>12 Maio 2016</date>
+	<subtitle>Exercicio 1</subtitle>
+	<section>Body</section>
+		<txt>Fazer um ficheiro .xml que descreva a estrutura de um
+			artigo de jornal.</txt>
+
+</article>
+
+

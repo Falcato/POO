@@ -1,0 +1,10 @@
+package lab2_75876;
+
+public class IterableArray<T> {
+	Object[] array;
+	
+	public IterableArray<T>(int size){
+		array = new Object[size]();
+	}
+	
+}

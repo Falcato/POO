@@ -1,5 +1,9 @@
 package classes;
-
+/**
+ *
+ * Implements a card in a blackjack game. It is the base
+ * of the whole game. Creates and identifies different cards.
+ */
 public class Card {
 	
 	private int value;
@@ -7,6 +11,12 @@ public class Card {
 	private String figure;
 	boolean turned;
 	
+	/**
+	 * Constructor for class Card, receives a card
+	 * and examines it, indentifying it.
+	 * 
+	 * @param card card to be identified
+	 */
 	public Card(String card){
 		
 		if(card.substring(0, 2).equals("10")){
@@ -22,6 +32,12 @@ public class Card {
 		}
 	}
 
+	/**
+	 * Receives the figure of the card and identifies it, setting the
+	 * figure attribute accordingly.
+	 * 
+	 * @param figure2 the figure of the card, e.g, "2", "3", "A", etc.
+	 */
 	void setValue(String figure2) {
 		
 		switch(figure2) {
@@ -46,22 +62,45 @@ public class Card {
 		return "" + figure + "" + naipe + "";
 	}
 
+	/**
+	 * Returns the value of the card.
+	 * @return the value of the card
+	 */
 	int getValue() {
 		return value;
 	}
 
+	/**
+	 * Returns the naipe of the card.
+	 * @return the naipe of the card
+	 */
 	String getNaipe() {
 		return naipe;
 	}
 
+	/**
+	 * Returns the figure of the card.
+	 * @return the figure of the card
+	 */
 	String getFigure() {
 		return figure;
 	}
 
+	/**
+	 * Returns the indication if the card is turned
+	 * or not.
+	 * @return true if turned up
+	 * 			false otherwise.
+	 */
 	boolean isTurned() {
 		return turned;
 	}
 
+	/**
+	 * Turns the card up or down.
+	 * @param turned true if turned up
+	 * 				 false otherwise.
+	 */
 	void setTurned(boolean turned) {
 		this.turned = turned;
 	}

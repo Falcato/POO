@@ -1,0 +1,22 @@
+package lab2_75876;
+
+public class IterableArray<T> {
+	Object[] array;
+	int size;
+	
+	public IterableArray(int size){
+		array = new Object[size];
+		this.size = size;
+	}
+	
+	void add(T t){
+		if(array[0] == null){
+			array[0] = t;
+		}else{
+			for(int i = 0; array[i] != null ; i++){
+				
+			}
+		}
+	}
+	
+}

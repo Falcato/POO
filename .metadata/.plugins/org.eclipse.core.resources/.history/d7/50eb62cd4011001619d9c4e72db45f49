@@ -1,0 +1,11 @@
+package lab2_75876;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		IterableArray<String> ia = new IterableArray<String>(4);
+		ia.add("Hello");
+	}
+
+}

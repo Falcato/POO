@@ -1,0 +1,31 @@
+package lab2_75876;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		IterableArray<String> ia = new IterableArray<String>(4);
+		try {
+			ia.add("Hello");
+			ia.add("Iterable");
+			ia.add("Array");
+			ia.add("!");
+			//ia.add("Fail");
+		} catch (IAException e) {
+			System.err.println("Array too short " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+		System.out.println(ia);
+		
+		IAIterator<String> iia = new IAIterator<String>(ia);
+		
+		while(iia.hasNext()){
+			System.out.println(iia.next());
+		}
+		System.out.println(iia.next());
+		
+		
+	}
+
+}
